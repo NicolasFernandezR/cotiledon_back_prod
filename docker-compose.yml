@@ -29,3 +29,11 @@ services:
       - DB_DATABASE=plantai_db
     ports:
       - "8080:8080"
+  frontend-prod:
+    image: nicolasf1/plantaiapp:1.0.1
+    depends_on:
+      - cotiledon-prod
+    environment:
+      - VITE_URL_ENDPOINT_BACKEND=http://cotiledon-prod:8080
+    ports:
+      - "5173:80"
